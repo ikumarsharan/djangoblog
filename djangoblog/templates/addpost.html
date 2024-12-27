@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<h1>Add Blog Post</h1>
+
+<div class="mb-3" style="margin-top: 100px;">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}   
+    {{ form.as_p }}
+    <button class="btn btn-primary">Post</button>
+</form>
+</div>
+
+{% else %}
+
+Access Denied ! You need to <a href="{% url 'login' %}">Login</a>
+
+{% endif %}
+
+{% endblock %}
